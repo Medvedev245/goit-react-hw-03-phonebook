@@ -45,7 +45,7 @@ export class App extends Component {
 
   changeFilter = value => {
     this.setState({
-      name: value,
+      filter: value,
     });
   };
 
@@ -56,13 +56,10 @@ export class App extends Component {
   };
 
   getVisibleItems = () => {
-    const { contacts, name } = this.state;
-    // const { name } = this.state;
-    if (!name) {
-      return contacts;
-    }
-    return contacts.name(contact =>
-      contact.name.toLowerCase().includes(name.toLowerCase())
+    const { contacts, filter } = this.state;
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
